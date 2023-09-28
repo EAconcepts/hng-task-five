@@ -7,13 +7,14 @@ import grid from '../assets/grid.svg'
 import grid2 from "../assets/grid2.svg";
 import videoRepository from "../assets/videoRepository.png";
 import record from '../assets/record.png'
+import Footer from './Footer'
 
 const Home = () => {
   return (
     <div className="">
       <Navbar />
-      <div className="h-screen">
-        <section className="relative mt-5 flex gap-x-2">
+      <section className="h-screen">
+        <div className="relative mt-5 flex gap-x-2">
           <div className=" w-full ml-[6.25rem] flex flex-col mt-[9.9rem] gap-y-[3rem]">
             <div className=" font-sora font-[700] text-[4rem] leading-[4rem]">
               <h1>Show Them</h1>
@@ -85,10 +86,11 @@ const Home = () => {
               />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      <div className="bg-[#404040] bg-opacity-[10%] h-12"></div>
       <section className="w-full flex flex-col items-center py-10 ">
-        <div className=" flex flex-col items-center gap-[0.5rem]">
+        <div className=" flex flex-col items-center gap-[0.5rem] mt-10">
           <h2 className="font-sora font-[700] text-[2.5rem] leading-[3.15rem] text-[#141414]">
             Features
           </h2>
@@ -179,6 +181,7 @@ const Home = () => {
           {/* </div> */}
         </div>
       </section>
+      <div className="bg-[#404040] bg-opacity-[10%] h-12"></div>
       <section className="w-full flex flex-col items-center py-[6.4rem]">
         <h2 className="font-sora font-[700] text-[2.5rem] leading-[3.15rem] text-[#141414]">
           How it works
@@ -240,6 +243,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
