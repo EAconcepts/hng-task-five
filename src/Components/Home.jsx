@@ -4,13 +4,14 @@ import woman from '../assets/woman.svg'
 import kid from  '../assets/kid.svg'
 import lady from '../assets/lady.svg'
 import grid from '../assets/grid.svg'
+import grid2 from "../assets/grid2.svg";
 
 const Home = () => {
   return (
     <div className="">
       <Navbar />
-      <section className=" px-2 mt-5 flex relative">
-        <div className="w-full ml-[6.25rem] border-2 flex flex-col mt-[8.9rem] gap-y-[3rem]">
+      <section className=" mt-5 flex relative gap-x-2">
+        <div className="w-full ml-[6.25rem] flex flex-col mt-[9.9rem] gap-y-[3rem]">
           <div className=" font-sora font-[700] text-[4rem] leading-[4rem]">
             <h1>Show Them</h1>
             <h1>Don't Just Tell</h1>
@@ -50,8 +51,8 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="w-full flex mt-[6rem] gap-x-4">
-          <div className="flex flex-col gap-y-5">
+        <div className="w-full flex mt-[6.5rem] gap-x-4 mr-10">
+          <div className="relative flex flex-col gap-y-5">
             <img
               src={woman}
               alt="woman on laptop"
@@ -62,12 +63,17 @@ const Home = () => {
               alt="father and kid on pc"
               className="rounded-[0.5rem]"
             />
+            <img
+              src={grid}
+              alt="grid dots"
+              className="absolute -bottom-[5rem] right-6 opacity-[30%] -z-10"
+            />
           </div>
           <div className="flex flex-col">
             <img
               src={grid}
               alt="grid dots"
-              className="absolute top-[6.688rem] right-3 opacity-[]"
+              className="absolute top-[2.9rem] right-6 opacity-[70%] -z-10"
             />
             <img
               src={lady}

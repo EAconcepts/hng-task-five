@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="w-full h-[5.25rem] flex flex-row px-[6.25rem] py-[0.75rem] items-center justify-between border-b ">
       <div className="flex items-center gap-[0.625rem] ">
         <img src={logo} alt="logo image" className="" />
-        <p className="text-[#100A42] leading-[1.21rem] text-[1rem]">
+        <p className="text-[#100A42] font-inter font-[700] leading-[1.21rem] text-[1rem]">
           HelpMeOut
         </p>
       </div>
