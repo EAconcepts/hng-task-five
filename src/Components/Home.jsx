@@ -11,17 +11,17 @@ import Footer from './Footer'
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="w-full">
       <Navbar />
-      <section className="h-screen">
-        <div className="relative mt-5 flex gap-x-2">
+      <section className="h-screen w-full">
+        <div className="relative w-full mt-5 flex gap-x-[1.25rem] pr-5">
           <div className=" w-full ml-[6.25rem] flex flex-col mt-[9.9rem] gap-y-[3rem]">
             <div className=" font-sora font-[700] text-[4rem] leading-[4rem]">
               <h1>Show Them</h1>
               <h1>Don't Just Tell</h1>
             </div>
 
-            <p className=" font-inter font-[400] text-[1.25rem] opacity-[75%] leading-[1.75rem]">
+            <p className=" font-inte font-[400] text-[1.25rem] opacity-[75%] leading-[1.75rem]">
               Help your friends and loved ones by creating and sending videos on
               how to get things done on a website
             </p>
@@ -70,7 +70,7 @@ const Home = () => {
               <img
                 src={grid}
                 alt="grid dots"
-                className="absolute -bottom-[5rem] right-6 opacity-[30%] -z-10"
+                className="absolute -bottom-[3rem] right-6 opacity-[30%] -z-10"
               />
             </div>
             <div className="flex flex-col">
