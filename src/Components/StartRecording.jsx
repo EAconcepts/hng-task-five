@@ -2,8 +2,24 @@ import React from 'react'
 import logo2 from '../assets/logo2.png'
 import monitor from '../assets/monitor.svg'
 import copy from "../assets/copy.svg";
+import RecordPane from './RecordPane';
 
 const StartRecording = () => {
+console.log('react is working')
+console.log('react is working')
+console.log("react is working");
+  const test=()=>{
+     console.log('clicked start')
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
+      chrome.tabs.sendMessage(tabs[0].id, {action: "request_recording"}, (response)=>{
+        if(!chrome.runtime.lastError){
+          console.log(response)
+        } else{
+          console.log(chrome.runtime.lastError, 'error line 18')
+        }
+      })
+    })
+  }
   return (
     <div className="w-[18.75rem] flex flex-col px-[1.5rem] pb-[2rem] pt-[1.5rem] rounded-[1.5rem] gap-y-[2rem] shadow-md">
       <nav className=" w-full flex flex-row justify-between">
@@ -267,7 +283,7 @@ const StartRecording = () => {
             </svg>
           </div>
         </div>
-        <button className="w-full bg-[#120B48] p-[1rem] font-workSans font-[500] text-[1rem] text-[#FAFDFF] leading-[1.173rem] rounded-xl">
+        <button onClick={test} className="w-full bg-[#120B48] p-[1rem] font-workSans font-[500] text-[1rem] text-[#FAFDFF] leading-[1.173rem] rounded-xl">
           Start Recording
         </button>
       </div>

@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "HelpMeOut",
+    "description": "This extension helps you record and share help videos with ease.",
+    "version": "0.0.1",
+    "background": {
+        "service_worker" :"background.js"
+    },
+    "action":{
+        "default_popup": "popup.html",
+        "default_title": "Open popup",
+        "default_icon": {
+            "16": "logo.png",
+            "32": "logo.png"
+        }
+    },
+    "permissions": [
+        "scripting", 
+        "tabs",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://*/",
+        "http://*/"
+    ]
+
+}
