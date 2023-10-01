@@ -7,32 +7,35 @@ import Navbar from "./Navbar";
 
 const VideoReady = () => {
   const {fileName} = useParams()
-  console.log(fileName)
-  const [videoName, setVideoName] = useState(`${fileName}.mp4`);
+  // console.log(fileName)
+  const [videoName, setVideoName] = useState(null);
   const [videoList, setVideoList] = useState(null)
   const [error, setError] = useState(null)
   const [email, setEmail] = useState("");
   const handleEditVideoName = () => {};
   const handleEmailSubmit = () => {};
-  
+  let video
+  const getAllVideos=()=>{
+    axios
+      .get("https://chrome-ext-server.onrender.com/api/HNG/showvideos")
+      .then((response) => {
+        if (response.status === 200) {
+          let videos = response.data.videos;
+          setVideoName( videos.find((vid)=>vid.includes(`${fileName}.mp4`)))
+          // console.log(video)
+          setVideoList(videos);
+        }
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError("Could not fetch video.", error.message);
+      });
+  }
   useEffect(() => {
-   axios
-     .get("https://chrome-ext-server.onrender.com/api/HNG/showvideos")
-     .then((response) => {
-      if(response.status ===2000){
-        let videos =response.data.videos
-        let video = videos.map((value)=>value.includes(videoName))
-        console.log(video)
-        setVideoList(videos)
-      }
-       console.log(response);
-
-     })
-     .catch((error) => {
-       console.log(error);
-       setError('Could not fetch video.', error.message)
-     });
+   getAllVideos()
   }, []);
+  console.log(videoName)
   return (
     <>
       <Navbar />
@@ -232,7 +235,7 @@ const VideoReady = () => {
           </div>
           <aside className="w-full flex flex-col px-[2.5rem]">
             <div className="flex flex-col border rounded-[0.5rem] border-[#413C6D]">
-              <video className="h-full w-full" src=""></video>
+              <video className="h-full w-full" controls autoPlay src={`https://chrome-ext-server.onrender.com/${videoName && videoName}`}></video>
               <div className="flex justify-between gap-x-[0.5rem] px-[2.5rem] py-2 border-t">
                 <p className="font-inte font-[500] text-[1.5rem] text-[#939393] leading-[1.816rem]">
                   0:30 / 3:00
