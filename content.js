@@ -6,16 +6,17 @@ const onAccessApproved=(stream)=>{
     recorder = new MediaRecorder(stream)
 
     recorder.start();
-    console.log("i have been injected - contentjs")
+console.log("i have been injected - contentjs")
+// var recorder = null
 
-    const onAccessApproved=(stream)=>{
-        recorder = new MediaRecorder(stream)
+const onAccessApproved=(stream)=>{
+    recorder = new MediaRecorder(stream)
 
-        recorder.start();
+    recorder.start();
 
-        recorder.onstop = function(){
-            stream.getTracks().forEach(function(track){
-                if(track.readyState ==='live'){
+    recorder.onstop = function(){
+        stream.getTracks().forEach(function(track){
+            if(track.readyState ==='live'){
                 track.stop()
             }
         })
@@ -23,10 +24,8 @@ const onAccessApproved=(stream)=>{
     
     recorder.ondataavailable = function(event){
         chunks.push(event.data)
-        const blobs = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
-        console.log(chunks)
-        const blobUrl = window.URL.createObjectURL(blobs);
-        console.log(blobUrl)
+        // const blobs = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+    // const blobUrl = window.URL.createObjectURL(blobs);
         let recordedBlob = event.data;
         let url = URL.createObjectURL(recordedBlob)
 
@@ -54,10 +53,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
         }).then((stream)=>{
             onAccessApproved(stream)
         })
-        navigator.getUserMedia({
-        audio: true,
-        video: { width: 1280, height: 720 },
-});
     }
 })
     recorder.onstop = function(){
@@ -92,11 +87,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
         console.log('requesting recording')
 
         sendResponse(`processed: ${message.action}`)
-
-        navigator.getUserMedia({
-        audio: true,
-        video: { width: 1280, height: 720 },
-});
 
         navigator.mediaDevices.getDisplayMedia({
             audio: true, video: true
@@ -133,7 +123,7 @@ async function uploadVideo(videoBlob) {
       const data = await response.json();
       console.log(data.message); // Output: File uploaded successfully
       const redirect =document.createElement('a')
-      redirect.href= `emmy-hng-task-five.vercel.app/video/${videoName}`
+      redirect.href= `https://emmy-hng-task-five.vercel.app/video/${videoName}`
       redirect.setAttribute('target', '_blank')
       document.body.appendChild(redirect)
       redirect.click()
